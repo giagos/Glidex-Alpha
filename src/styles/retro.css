@@ -1,0 +1,88 @@
+/* Retro / Platinum Cream specific surface treatments */
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--cream-bg);
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+button {
+  font-family: inherit;
+}
+
+/* Subtle paper texture using two layered tiny gradients (no images) */
+.paper {
+  background-color: var(--cream-bg);
+  background-image:
+    radial-gradient(rgba(120, 100, 60, 0.04) 1px, transparent 1px),
+    radial-gradient(rgba(120, 100, 60, 0.03) 1px, transparent 1px);
+  background-size: 6px 6px, 11px 11px;
+  background-position: 0 0, 3px 4px;
+}
+
+/* Retro scrollbars (WebKit / Chromium) */
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream-inset);
+  box-shadow: inset 0 0 0 1px var(--border-dark);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--cream-panel);
+  box-shadow: var(--shadow-bevel-out);
+}
+::-webkit-scrollbar-thumb:active {
+  box-shadow: var(--shadow-bevel-in);
+}
+
+/* Numeric mono cells */
+.mono {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Selection */
+::selection {
+  background: var(--accent-warm);
+  color: var(--cream-card);
+}
+
+/* Window title bar shimmer (very subtle) */
+.titlebar {
+  background:
+    linear-gradient(
+      to bottom,
+      #f6efdb 0%,
+      #ece3cc 45%,
+      #e0d6bb 100%
+    );
+  border-bottom: 1px solid var(--border-dark);
+  box-shadow: inset 0 1px 0 var(--bevel-hi);
+}
+
+/* Focus ring: warm dashed inset */
+:focus-visible {
+  outline: 1px dashed var(--accent-warm);
+  outline-offset: -3px;
+}
+
+/* Disabled */
+[aria-disabled='true'],
+:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
