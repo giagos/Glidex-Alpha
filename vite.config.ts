@@ -4,6 +4,7 @@ import electron from 'vite-plugin-electron/simple';
 import path from 'node:path';
 
 const isElectron = process.env.ELECTRON === '1';
+const isPages = process.env.GH_PAGES === '1';
 
 export default defineConfig({
   resolve: {
@@ -27,7 +28,7 @@ export default defineConfig({
         ]
       : []),
   ],
-  base: './',
+  base: isPages ? '/Glidex-Alpha/' : './',
   build: {
     outDir: 'dist',
     emptyOutDir: true,

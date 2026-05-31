@@ -9,6 +9,7 @@
     "dev": "vite",
     "dev:electron": "cross-env ELECTRON=1 vite",
     "build:web": "tsc -b && vite build",
+    "build:pages": "cross-env GH_PAGES=1 tsc -b && cross-env GH_PAGES=1 vite build",
     "build:electron": "tsc -b && vite build && tsc -p electron/tsconfig.json && electron-builder",
     "preview": "vite preview",
     "test": "vitest run",
@@ -56,7 +57,21 @@
       "output": "release"
     },
     "win": {
-      "target": "nsis"
-    }
+      "target": [
+        { "target": "nsis", "arch": ["x64"] }
+      ],
+      "artifactName": "Glidex-Alpha-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Glidex Alpha"
+    },
+    "publish": [
+      { "provider": "github", "owner": "giagos", "repo": "Glidex-Alpha" }
+    ]
   }
 }
